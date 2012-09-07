@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en">
+<head>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+<script>
+
+	function calculate(){
+		var perMonth = 2.08;
+
+		var completeMonths = (12 - parseInt($('#startMonth').val())) * perMonth;
+
+		alert(completeMonths); 
+	}
+</script>
+
+</head>
+
+<body>
+
+<label>Pick your start date</label>
+<input type="text" id='startDay' name='startDay' placeholder='dd' /> / 
+<input type="text" id='startMonth' name='startMonth' placeholder='mm' />
+<br/><br/>
+<button onclick='calculate();'> Show me the money! </button>
+
+</body>
+</html>
