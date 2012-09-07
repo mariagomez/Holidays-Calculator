@@ -14,17 +14,32 @@
 	function calculate(){
 		
 		var holidaysPerDay = 25 / 365;
+		var result = "";
+		var date = $( "#datepicker" ).datepicker( "getDate" );
 
-		var year = $( "#datepicker" ).datepicker( "getDate" ).getFullYear() + 1;
-		var end = new Date(year, 0, 1, 0, 0);
+		if (date == null) {
+			result = "0";
+		}
+		else {
+			var currentYear = new Date().getFullYear();
+			var year = date.getFullYear() + 1;
 
-		var daysLeftToEndOfYear = (end - $( "#datepicker" ).datepicker( "getDate" ))/1000/60/60/24;
+			if (year - currentYear != 1) {
+				year = currentYear + 1;
+				$( "#datepicker" ).datepicker( "setDate", date.getDay() + '/' + date.getMonth() + '/' + currentYear );
+				date = $( "#datepicker" ).datepicker( "getDate" );
+			}
 
-		var result = daysLeftToEndOfYear * holidaysPerDay;
+			var end = new Date(year, 0, 1, 0, 0);
 
-		//var text = "holidaysPerDay " + holidaysPerDay + "\n daysLeftToEndOfYear " + daysLeftToEndOfYear + "\n year " + year + "\n end " + end + "\n result " + result; 
-		
-		$('#result').text(result);
+			var daysLeftToEndOfYear = (end - date)/1000/60/60/24;
+
+			result = daysLeftToEndOfYear * holidaysPerDay;
+
+			//var text = "holidaysPerDay " + holidaysPerDay + "\n daysLeftToEndOfYear " + daysLeftToEndOfYear + "\n year " + year + "\n end " + end + "\n result " + result; 
+		}
+
+		$('#result').text(result.toFixed(2));
 		$('#resultDiv').show();
 	}
 
