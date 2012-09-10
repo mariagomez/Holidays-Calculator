@@ -4,7 +4,12 @@ var app = express.createServer(express.logger());
 
 
 app.get('/holidays', function(request, response) {
-  response.sendfile(__dirname + '/views/form.html');
+  response.sendfile(__dirname + '/views/holidays.html');
+});
+
+
+app.get('/eopp', function(request, response) {
+  response.sendfile(__dirname + '/views/eopp.html');
 });
 
 var port = process.env.PORT || 5000;
