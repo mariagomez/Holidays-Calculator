@@ -3,7 +3,7 @@ var express = require('express');
 var app = express.createServer(express.logger());
 
 
-app.get('/', function(request, response) {
+app.get('/holidays', function(request, response) {
   response.sendfile(__dirname + '/views/form.html');
 });
 
